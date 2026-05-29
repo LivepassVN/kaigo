@@ -26,14 +26,14 @@ if ! git diff-index --quiet HEAD -- 2>/dev/null || [ -n "$(git status --porcelai
   exit 1
 fi
 
-git remote remove "$REMOTE" 2>/dev/null || true
-git remote add "$REMOTE" "$URL"
-
 if gh repo view "${ORG}/${REPO}" >/dev/null 2>&1; then
-  echo "リポジトリ ${ORG}/${REPO} は既に存在します。push のみ実行します。"
+  echo "リポジトリ ${ORG}/${REPO} は既に存在します。"
+  git remote remove "$REMOTE" 2>/dev/null || true
+  git remote add "$REMOTE" "$URL"
   git push -u "$REMOTE" main
 else
   echo "リポジトリ ${ORG}/${REPO} を作成して push します..."
+  git remote remove "$REMOTE" 2>/dev/null || true
   gh repo create "${ORG}/${REPO}" \
     --public \
     --description "認知症独居支援スピーカー（OpenHome DevKit / Phase 1）" \
