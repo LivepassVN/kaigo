@@ -1,0 +1,11 @@
+{
+  "enabled": false,
+  "consent_given": false,
+  "resident_label": "利用者",
+  "webhook_url": "https://your-server.example.com/kaigo/notify",
+  "webhook_secret": "change-me-long-random-string",
+  "notify_on_emergency": true,
+  "notify_daily_summary": true,
+  "daily_summary_time": "21:00",
+  "last_daily_sent_date": null
+}
