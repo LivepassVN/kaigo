@@ -34,8 +34,7 @@ if gh repo view "${ORG}/${REPO}" >/dev/null 2>&1; then
   git push -u "$REMOTE" main
 else
   echo "リポジトリ ${ORG}/${REPO} を作成して push します..."
-  gh repo create "${REPO}" \
-    --org "$ORG" \
+  gh repo create "${ORG}/${REPO}" \
     --public \
     --description "認知症独居支援スピーカー（OpenHome DevKit / Phase 1）" \
     --source=. \
